@@ -1,5 +1,5 @@
 #!/bin/bash
-# Script by : LostServer
+# Script by : SemarNetwork
 clear
 echo " "
 echo " "
@@ -72,5 +72,5 @@ echo " Multi Login = kill "
 echo " Cara pakai : kill [nombor PID] "
 echo "-------------------------------------"
 
-echo " By LostServer"
+echo " By SemarNetwork"
 echo "";
