@@ -2,11 +2,11 @@
 # Script by : LostServer
 clear
 echo -e ""
-echo -e "======================================"
+echo -e "====================================="
 echo -e ""
-echo -e "       AutoScriptVPS by LostServer    "
+echo -e "       AutoScriptVPS by SemarNetwor  "
 echo -e ""
-echo -e "======================================"
+echo -e "====================================="
 read -p "         Username       :  " User
 egrep "^$User" /etc/passwd >/dev/null
 if [ $? -eq 0 ]; then
@@ -24,7 +24,7 @@ clear
 echo -e ""
 echo -e "========================================"
 echo -e ""
-echo -e "    AutoScriptVPS by LostServer         "
+echo -e "    AutoScriptVPS by SemarNetwork       "
 echo -e ""
 echo -e "    Username        :  $User"
 echo -e "    Days Added      :  $Days Days"
@@ -36,7 +36,7 @@ clear
 echo -e ""
 echo -e "========================================"
 echo -e ""
-echo -e "      AutoScriptVPS by LostServer       "
+echo -e "      AutoScriptVPS by SemarNetwork     "
 echo -e ""
 echo -e "        Username Doesnt Exist           "
 echo -e ""
