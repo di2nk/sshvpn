@@ -236,7 +236,7 @@ netfilter-persistent reload
 
 # download script
 cd /usr/bin
-wget -O add-host "https://raw.githubusercontent.com/di2nk/sshvpn/main/addhost.sh"
+wget -O add-host "https://raw.githubusercontent.com/di2nk/sshvpn/main/add-host.sh"
 wget -O about "https://raw.githubusercontent.com/di2nk/sshvpn/main/about.sh"
 wget -O menu "https://raw.githubusercontent.com/di2nk/sshvpn/main/menu.sh"
 wget -O usernew "https://raw.githubusercontent.com/di2nk/sshvpn/main/usernew.sh"
