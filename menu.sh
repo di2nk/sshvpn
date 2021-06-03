@@ -47,7 +47,7 @@ echo "--------------- Welcome To Script Menu ---------------"
   echo -e "-----------------[ SYSTEM OPTION ]-----------------"
   echo -e "${color1}11${color3}.Speedtest Server (${color2}speedtest${color3})"
   echo -e "${color1}12${color3}.Add Or Change Subdomain Host For VPS (${color2}add-host${color3})"
-  echo -e "${color1}13${color3}.Webmin Menu (${color2}wbmn${color3})"
+  echo -e "${color1}13${color3}.Webmin Menu (${color2}webmin${color3})"
   echo -e "${color1}14${color3}.Check Usage of VPS Ram (${color2}ram ${color3})"
   echo -e "${color1}15${color3}.Reboot VPS (${color2}service squid reboot${color3})"
   echo -e "${color1}16${color3}.Reboot VPS(${color2}reboot${color3})"
@@ -79,7 +79,7 @@ speedtest
 elif test $x -eq 12; then
 add-host
 elif test $x -eq 13; then
-wbmn
+webmin
 elif test $x -eq 14; then
 ram
 elif test $x -eq 15; then
