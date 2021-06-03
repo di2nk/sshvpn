@@ -15,7 +15,7 @@ color1='\e[031;1m'
 color2='\e[34;1m'
 color3='\e[0m'
 echo "--------------- Welcome To Script Menu ---------------"
-	echo "----------------- Moded By Zhang-Zi --------------------"
+	echo "----------------- Moded By SemarNetwork --------------------"
 	echo " "
 	cname=$( awk -F: '/model name/ {name=$2} END {print name}' /proc/cpuinfo )
 	cores=$( awk -F: '/model name/ {core++} END {print core}' /proc/cpuinfo )
@@ -52,7 +52,7 @@ echo "--------------- Welcome To Script Menu ---------------"
   echo -e "${color1}15${color3}.Reboot VPS (${color2}service squid reboot${color3})"
   echo -e "${color1}16${color3}.Reboot VPS(${color2}reboot${color3})"
   echo -e "${color1}17${color3}.Exit Menu (${color2}exit${color3})"
-  echo "------------------------Edited Mod By Di2nk-----------------------------"
+  echo "------------------------Edited By SemarNetwork-----------------------------"
 read -p "Choose an option from (1-17): " x
 if test $x -eq 1; then
 usernew
