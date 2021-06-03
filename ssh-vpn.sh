@@ -13,14 +13,14 @@ ver=$VERSION_ID
 #detail nama perusahaan
 country=ID
 state=Indonesia
-locality=Jawa-Tengah
-organization=KopeT-19
-organizationalunit=KopeT-19.com
-commonname=KopeT-19.com
-email=admin@KopeT-19.com
+locality=Jawa-Barat
+organization=Semar
+organizationalunit=SemarNetwork
+commonname=semar.email
+email=admin@semar.email
 
 # simple password minimal
-wget -O /etc/pam.d/common-password "https://raw.githubusercontent.com/zahwanugrah/AutoScriptSSH/main/password"
+wget -O /etc/pam.d/common-password "https://raw.githubusercontent.com/di2nk/sshvpn/main/password"
 chmod +x /etc/pam.d/common-password
 
 # go to root
@@ -76,7 +76,7 @@ apt dist-upgrade -y
 apt -y install wget curl
 
 # set time GMT +8
-ln -fs /usr/share/zoneinfo/Asia/Kuala_Lumpur /etc/localtime
+ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 
 # set locale
 sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
@@ -85,22 +85,22 @@ sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 apt-get --reinstall --fix-missing install -y bzip2 gzip coreutils wget screen rsyslog iftop htop net-tools zip unzip wget net-tools curl nano sed screen gnupg gnupg1 bc apt-transport-https build-essential dirmngr libxml-parser-perl neofetch git
 echo "clear" >> .profile
 echo "neofetch" >> .profile
-echo "echo by KopeT-19" >> .profile
+echo "echo by Semar" >> .profile
 
 # install webserver
 apt -y install nginx
 cd
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/zahwanugrah/AutoScriptSSH/main/nginx.conf"
+wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/di2nk/sshvpn/main/nginx.conf"
 mkdir -p /home/vps/public_html
-echo "<pre>Setup by kopet-19</pre>" > /home/vps/public_html/index.html
-wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/zahwanugrah/AutoScriptSSH/main/vps.conf"
+echo "<pre>Setup by semar</pre>" > /home/vps/public_html/index.html
+wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/di2nk/sshvpn/main/vps.conf"
 /etc/init.d/nginx restart
 
 # install badvpn
 cd
-wget -O /usr/bin/badvpn-udpgw "https://github.com/zahwanugrah/AutoScriptSSH/raw/main/badvpn-udpgw64"
+wget -O /usr/bin/badvpn-udpgw "https://github.com/di2nk/sshvpn/raw/main/badvpn-udpgw64"
 chmod +x /usr/bin/badvpn-udpgw
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 500' /etc/rc.local
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500' /etc/rc.local
@@ -124,7 +124,7 @@ echo "/usr/sbin/nologin" >> /etc/shells
 # install squid
 cd
 apt -y install squid3
-wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/zahwanugrah/AutoScriptSSH/main/squid3.conf"
+wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/di2nk/sshvpn/main/squid3.conf"
 sed -i $MYIP2 /etc/squid/squid.conf
 
 # setting vnstat
@@ -172,7 +172,7 @@ sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 /etc/init.d/stunnel4 restart
 
 #OpenVPN
-wget https://raw.githubusercontent.com/zahwanugrah/AutoScriptSSH/main/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
+wget https://raw.githubusercontent.com/di2nk/sshvpn/main/vpn.sh &&  chmod +x vpn.sh && ./vpn.sh
 
 # install fail2ban
 apt -y install fail2ban
@@ -209,13 +209,13 @@ cd
 apt install -y libxml-parser-perl
 
 # banner /etc/issue.net
-wget -O /etc/issue.net "https://raw.githubusercontent.com/zahwanugrah/AutoScriptSSH/main/bannerssh.conf"
+wget -O /etc/issue.net "https://raw.githubusercontent.com/di2nk/sshvpn/main/bannerssh.conf"
 echo "Banner /etc/issue.net" >>/etc/ssh/sshd_config
 sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
 
 #install bbr dan optimasi kernel
-wget https://raw.githubusercontent.com/zahwanugrah/AutoScriptSSH/main/bbr.sh && chmod +x bbr.sh && ./bbr.sh
-wget https://raw.githubusercontent.com/zahwanugrah/AutoScriptSSH/main/set-br.sh && chmod +x set-br.sh && ./set-br.sh
+wget https://raw.githubusercontent.com/di2nk/sshvpn/main/bbr.sh && chmod +x bbr.sh && ./bbr.sh
+wget https://raw.githubusercontent.com/di2nk/sshvpn/main/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 
 # blockir torrent
 iptables -A FORWARD -m string --string "get_peers" --algo bm -j DROP
@@ -236,25 +236,25 @@ netfilter-persistent reload
 
 # download script
 cd /usr/bin
-wget -O add-host "https://raw.githubusercontent.com/zahwanugrah/AutoScriptSSH/main/addhost.sh"
-wget -O about "https://raw.githubusercontent.com/zahwanugrah/AutoScriptSSH/main/about.sh"
-wget -O menu "https://raw.githubusercontent.com/zahwanugrah/auto/main/menu.sh"
-wget -O usernew "https://raw.githubusercontent.com/zahwanugrah/AutoScriptSSH/main/usernew.sh"
-wget -O trial "https://raw.githubusercontent.com/zahwanugrah/AutoScriptSSH/main/trial.sh"
-wget -O hapus "https://raw.githubusercontent.com/zahwanugrah/AutoScriptSSH/main/hapus.sh"
-wget -O member "https://raw.githubusercontent.com/zahwanugrah/AutoScriptSSH/main/member.sh"
-wget -o webmin "https://raw.githubusercontent.com/zahwanugrah/AutoScriptSSH/main/webmin.sh"
-wget -O delete "https://raw.githubusercontent.com/zahwanugrah/AutoScriptSSH/main/delete.sh"
-wget -O cek "https://raw.githubusercontent.com/zahwanugrah/AutoScriptSSH/main/cek.sh"
-wget -O restart "https://raw.githubusercontent.com/zahwanugrah/AutoScriptSSH/main/restart.sh"
-wget -O speedtest "https://github.com/zahwanugrah/AutoScriptSSH/raw/main/speedtest_cli.py"
-wget -O info "https://raw.githubusercontent.com/zahwanugrah/AutoScriptSSH/main/info.sh"
-wget -O ram "https://raw.githubusercontent.com/zahwanugrah/AutoScriptSSH/main/ram.sh"
-wget -O renew "https://raw.githubusercontent.com/zahwanugrah/AutoScriptSSH/main/renew.sh"
-wget -O autokill "https://raw.githubusercontent.com/zahwanugrah/AutoScriptSSH/main/autokill.sh"
-wget -O ceklim "https://raw.githubusercontent.com/zahwanugrah/AutoScriptSSH/main/ceklim.sh"
-wget -O tendang "https://raw.githubusercontent.com/zahwanugrah/AutoScriptSSH/main/tendang.sh"
-wget -O clear-log "https://raw.githubusercontent.com/zahwanugrah/AutoScriptSSH/main/clear-log.sh"
+wget -O add-host "https://raw.githubusercontent.com/di2nk/sshvpn/main/addhost.sh"
+wget -O about "https://raw.githubusercontent.com/di2nk/sshvpn/main/about.sh"
+wget -O menu "https://raw.githubusercontent.com/di2nk/sshvpn/main/menu.sh"
+wget -O usernew "https://raw.githubusercontent.com/di2nk/sshvpn/main/usernew.sh"
+wget -O trial "https://raw.githubusercontent.com/di2nk/sshvpn/main/trial.sh"
+wget -O hapus "https://raw.githubusercontent.com/di2nk/sshvpn/main/hapus.sh"
+wget -O member "https://raw.githubusercontent.com/di2nk/sshvpn/main/member.sh"
+wget -o webmin "https://raw.githubusercontent.com/di2nk/sshvpn/main/webmin.sh"
+wget -O delete "https://raw.githubusercontent.com/di2nk/sshvpn/main/delete.sh"
+wget -O cek "https://raw.githubusercontent.com/di2nk/sshvpn/main/cek.sh"
+wget -O restart "https://raw.githubusercontent.com/di2nk/sshvpn/main/restart.sh"
+wget -O speedtest "https://github.com/di2nk/sshvpn/raw/main/speedtest_cli.py"
+wget -O info "https://raw.githubusercontent.com/di2nk/sshvpn/main/info.sh"
+wget -O ram "https://raw.githubusercontent.com/di2nk/sshvpn/main/ram.sh"
+wget -O renew "https://raw.githubusercontent.com/di2nk/sshvpn/main/renew.sh"
+wget -O autokill "https://raw.githubusercontent.com/di2nk/sshvpn/main/autokill.sh"
+wget -O ceklim "https://raw.githubusercontent.com/di2nk/sshvpn/main/ceklim.sh"
+wget -O tendang "https://raw.githubusercontent.com/di2nk/sshvpn/main/tendang.sh"
+wget -O clear-log "https://raw.githubusercontent.com/di2nk/sshvpn/main/clear-log.sh"
 
 echo "0 5 * * * root clear-log && reboot" >> /etc/crontab
 
