@@ -73,4 +73,3 @@ echo " Cara pakai : kill [nombor PID] "
 echo "-------------------------------------"
 
 echo -e "Script by \e[1;33;44m Semar \e[0m"
-echo "";
