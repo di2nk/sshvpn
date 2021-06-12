@@ -1,5 +1,5 @@
 #!/bin/bash
-# Script by : Di2nk
+# Script by : di2nk
 clear
 echo " "
 echo " "
@@ -72,4 +72,4 @@ echo " Multi Login = kill "
 echo " Cara pakai : kill [Nomor PID] "
 echo "-------------------------------------"
 
-echo -e "Script by \e[1;33;44m Semar \e[0m"
+echo -e "Accepted by \e[1;33;44m Semar \e[0m"
